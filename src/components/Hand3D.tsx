@@ -245,7 +245,7 @@ interface Hand3DProps {
 
 export const Hand3D: React.FC<Hand3DProps> = ({ handLandmarks }) => {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-lg shadow-2xl">
+    <div className="w-full h-full bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 rounded-lg shadow-2xl">
       <Canvas
         camera={{ position: [0, 0, 3], fov: 50 }}
         shadows

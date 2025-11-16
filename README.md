@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 3D Hand Gesture Tracker
+
+A real-time hand gesture detection and 3D visualization web application built with Next.js, MediaPipe, and Three.js.
+
+## Features
+
+- **Real-time Hand Detection**: Uses MediaPipe's hand landmarker model to detect hand landmarks from webcam feed
+- **3D Visualization**: Renders detected hand gestures as a 3D model using Three.js and React Three Fiber
+- **Interactive Controls**: Orbit controls to view the 3D hand model from different angles
+- **Responsive Design**: Works on desktop and mobile devices
+
+## Technologies Used
+
+- **Next.js 15**: React framework with App Router
+- **TypeScript**: Type-safe development
+- **MediaPipe**: Hand landmark detection
+- **Three.js**: 3D rendering
+- **React Three Fiber**: React renderer for Three.js
+- **Tailwind CSS**: Styling
 
 ## Getting Started
 
-First, run the development server:
-
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Run the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Allow camera access when prompted
 
-## Learn More
+5. Show your hand to the camera and see it visualized in 3D!
 
-To learn more about Next.js, take a look at the following resources:
+## How It Works
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Webcam Feed**: The application captures video from your webcam using the browser's MediaStream API
+2. **Hand Detection**: MediaPipe processes each video frame to detect 21 hand landmarks
+3. **3D Rendering**: The landmarks are converted to 3D coordinates and rendered using Three.js
+4. **Real-time Updates**: The 3D model updates in real-time as you move your hand
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout
+│   └── page.tsx            # Main page
+├── components/
+│   ├── HandGestureDetector.tsx  # Main container component
+│   ├── WebcamFeed.tsx          # Webcam component
+│   └── Hand3D.tsx              # 3D hand visualization
+├── hooks/
+│   └── useHandDetection.ts     # MediaPipe hand detection hook
+└── types/
+    └── hand.ts                 # TypeScript types
+```
+
+## MediaPipe Hand Landmarks
+
+The application detects 21 hand landmarks:
+- Wrist (0)
+- Thumb (1-4)
+- Index finger (5-8)
+- Middle finger (9-12)
+- Ring finger (13-16)
+- Pinky (17-20)
+
+## Browser Compatibility
+
+This application requires:
+- Modern browser with WebRTC support (Chrome, Firefox, Safari, Edge)
+- Camera access
+- WebGL support
 
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
